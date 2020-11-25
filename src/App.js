@@ -29,10 +29,11 @@ function App() {
       redirect: 'follow'
     };
     
+    const response = await fetch("https://api.covid19api.com/summary", requestOptions);
+    const data = await response.json();
+
     // If the seach is empty then we search world wide, if the user has typed in a country we fetch data from that country
     if (query === '') {      
-      const response = await fetch("https://api.covid19api.com/summary", requestOptions);
-      const data = await response.json();
 
       //console.log(data);
 
@@ -43,9 +44,6 @@ function App() {
       setErrorMessage('empty');
     }
     else {
-      const response = await fetch("https://api.covid19api.com/summary", requestOptions);
-      const data = await response.json();
-
       //console.log(data);
 
       let foundCountry = false;
@@ -126,12 +124,12 @@ function App() {
       <p className="error-message" style={errorMessage === 'empty' ? {visibility:"hidden"} : {visibility:"visible"}}>{errorMessage}</p> 
 
       <div className="cards">
-        <Card title={"Cases: " + cases}/>
-        <Card title={"Deaths: " + deaths}/>
-        <Card title={"Recovered: " + recovered}/>
+        <Card title={`Cases: >${cases}`}/>
+        <Card title={`Deaths: ${deaths}`}/>
+        <Card title={`Recovered: ${recovered}`}/>
       </div>
 
-      <p className="api-credit">Data is fetched from <a href="https://github.com/CSSEGISandData/COVID-19">Johns Hopkins CSSE</a> using <a href="https://covid19api.com/">covid19api.com</a></p>
+      <footer>Made by <a href="https://twitter.com/lordmaltazor" target="_blank">@lordmaltazor </a> | Data is fetched from <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">Johns Hopkins CSSE</a> using <a href="https://covid19api.com/" target="_blank">covid19api.com</a></footer>      
     </div>
   );
 }
