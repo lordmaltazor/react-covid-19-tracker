@@ -13,12 +13,22 @@
   color: white;
   margin-top: 15px;
   font-size: 50px;
+  text-align: center;
+}
+
+@media screen and (max-width: 750px)
+{
+  .header
+  {
+    font-size: 6vw;
+  }
 }
 
 .search-form
 {
   display: flex;
   width: 35vw;
+  min-width: 300px;
   height: 40px;
   margin-top: 25px;
 }
@@ -84,9 +94,34 @@
   justify-content: center;
   align-items: center;
   width: 25%;
-  height: 60vh;
+  height: 100%;
   font-size: 22px;
   border-radius: 50px;
+  text-align: center;
+}
+
+@media screen and (max-width: 1000px)
+{
+  .cards
+  {
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+  }
+
+  .card
+  {
+    width: 90%;
+    height: 25%;
+  }
+}
+
+@media screen and (max-width: 700px)
+{
+  .card
+  {
+    font-size: 3vw;
+  }
 }
 
 footer
@@ -94,11 +129,11 @@ footer
   background: rgb(240, 240, 240);
   position: absolute;
   bottom: 0;
-  width: 100vw;
-  height: 50px;
+  width: calc(100vw - 20px);
+  height: 30px;
+  line-height: 30px; /* Same as height */
+  padding: 10px 0 10px 10px;
   font-size: 24px;
-  line-height: 50px; /* Same as height */
-  text-indent: 15px;
 }
 
 footer a
@@ -110,4 +145,20 @@ footer a
 footer a:hover
 {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 1000px)
+{
+  footer
+  {
+    height: 65px;
+  }
+}
+
+@media screen and (max-width: 510px)
+{
+  footer
+  {
+    font-size: 4vw;
+  }
 }

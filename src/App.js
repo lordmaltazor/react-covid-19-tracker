@@ -124,12 +124,14 @@ function App() {
       <p className="error-message" style={errorMessage === 'empty' ? {visibility:"hidden"} : {visibility:"visible"}}>{errorMessage}</p> 
 
       <div className="cards">
-        <Card title={`Cases: >${cases}`}/>
+        <Card title={`Cases: ${cases}`}/>
         <Card title={`Deaths: ${deaths}`}/>
         <Card title={`Recovered: ${recovered}`}/>
       </div>
 
-      <footer>Made by <a href="https://twitter.com/lordmaltazor" target="_blank">@lordmaltazor </a> | Data is fetched from <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">Johns Hopkins CSSE</a> using <a href="https://covid19api.com/" target="_blank">covid19api.com</a></footer>      
+      <footer>
+        <p>Made by <a href="https://twitter.com/lordmaltazor" target="_blank">@lordmaltazor </a> | Data is fetched from <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">Johns Hopkins CSSE</a> using <a href="https://covid19api.com/" target="_blank">covid19api.com</a></p>
+      </footer>      
     </div>
   );
 }
