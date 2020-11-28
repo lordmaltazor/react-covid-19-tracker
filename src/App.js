@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
-import Card from './Card';
-import Header from './Header';
+import './Components/App.css';
+import Header from './Components/Header';
+import Searchbar from './Components/Searchbar';
+import Card from './Components/Card';
+import Footer from './Components/Footer';
 
 function App() {  
   const [cases, setCases] = useState(0);
@@ -11,7 +13,7 @@ function App() {
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('');
 
-  const [errorMessage, setErrorMessage] = useState('empty'); 
+  const [errorMessage, setErrorMessage] = useState(''); 
 
   useEffect(() => {
     fetchData();
@@ -41,7 +43,7 @@ function App() {
       setDeaths(commafy(data.Global.TotalDeaths));
       setRecovered(commafy(data.Global.TotalRecovered));
 
-      setErrorMessage('empty');
+      setErrorMessage('');
     }
     else {
       //console.log(data);
@@ -60,7 +62,7 @@ function App() {
 
           foundCountry = true;
 
-          setErrorMessage('empty');
+          setErrorMessage('');
 
           return;
         }
@@ -116,22 +118,17 @@ function App() {
     <div className="app">
       <Header text={titleCase(query)}/>
 
-      <form className="search-form" onSubmit={submitForm}>
-        <input className="search-bar" type="text" placeholder="Search by country" onChange={updateSearch}/>
-        <button className="search-button">Search</button>
-      </form>
+      <Searchbar submitForm={submitForm} onChange={updateSearch}/>
 
-      <p className="error-message" style={errorMessage === 'empty' ? {visibility:"hidden"} : {visibility:"visible"}}>{errorMessage}</p> 
+      <p className="error-message">{errorMessage}</p> 
 
       <div className="cards">
-        <Card title={`Cases: ${cases}`}/>
-        <Card title={`Deaths: ${deaths}`}/>
-        <Card title={`Recovered: ${recovered}`}/>
+        <Card title={'Cases: '} amount={cases}/>
+        <Card title={'Deaths: '} amount={deaths}/>
+        <Card title={'Recoveries: '} amount={recovered}/>
       </div>
 
-      <footer>
-        <p>Made by <a href="https://twitter.com/lordmaltazor" target="_blank">@lordmaltazor </a> | Data is fetched from <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">Johns Hopkins CSSE</a> using <a href="https://covid19api.com/" target="_blank">covid19api.com</a></p>
-      </footer>      
+      <Footer />
     </div>
   );
 }

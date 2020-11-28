@@ -1,7 +1,8 @@
 import React from 'react';
+import './Header.css';
 
 function Header({text}) {
-    if (text == '')
+    if (text === '')
     {
         return (
             <h1 className="header">Covid-19 Cases, deaths and recoveries World-Wide</h1>

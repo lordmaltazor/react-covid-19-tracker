@@ -1,0 +1,67 @@
+.card 
+{
+  background: rgb(240, 240, 240);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  width: 25%;
+  height: 100%;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.container
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 120px;
+  margin: auto 0;
+}
+
+.title
+{
+  margin: 0;
+  padding: 0;
+  font-size: 50px;
+  font-weight: 700;  
+}
+
+.amount
+{
+  margin: 0;
+  padding: 0;
+  font-size: 40px;
+  font-weight: 500;  
+}
+
+@media screen and (max-width: 1000px)
+{
+  .card
+  {
+    width: 90%;
+    height: 25%;
+    min-height: 60px;
+  }
+
+  .container
+  {
+    height: 85%;
+  }
+}
+
+@media screen and (max-width: 600px)
+{
+  .title
+  {
+    font-size: 8vw; 
+  }
+
+  .amount
+    {
+    font-size: 7vw;
+  }
+}

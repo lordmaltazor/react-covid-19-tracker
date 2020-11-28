@@ -1,0 +1,39 @@
+footer
+{
+  background: rgb(240, 240, 240);
+  position: absolute;
+  bottom: 0; 
+  width: calc(100vw - 10px);
+  height: 30px;
+  line-height: 30px; /* Same as height */
+  padding: 10px 0 10px 10px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+footer a
+{
+  color: blue;
+  text-decoration: none;
+}
+
+footer a:hover
+{
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 1000px)
+{
+  footer
+  {
+    height: 65px;
+  }
+}
+
+@media screen and (max-width: 510px)
+{
+  footer
+  {
+    font-size: 4vw;
+  }
+}
