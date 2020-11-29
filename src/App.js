@@ -16,36 +16,31 @@ function App() {
   const [errorMessage, setErrorMessage] = useState(''); 
 
   useEffect(() => {
-    fetchData();
+    fetchData('');
   }, []) 
-
-  useEffect(() => {
-    fetchData();
-  }, [query])
-
-  const fetchData = async () => { 
-    //console.log("Query: " + query);
-    
+  
+  const fetchData = async (searchQuery) =>
+  {
     const requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
-    
+
     const response = await fetch("https://api.covid19api.com/summary", requestOptions);
     const data = await response.json();
-
-    // If the seach is empty then we search world wide, if the user has typed in a country we fetch data from that country
-    if (query === '') {      
-
+      
+    if (searchQuery === '') 
+    {      
       //console.log(data);
 
       setCases(commafy(data.Global.TotalConfirmed));
       setDeaths(commafy(data.Global.TotalDeaths));
       setRecovered(commafy(data.Global.TotalRecovered));
 
-      setErrorMessage('');
+      setErrorMessage("");
     }
-    else {
+    else 
+    {
       //console.log(data);
 
       let foundCountry = false;
@@ -54,7 +49,7 @@ function App() {
 
       for (let i = 0; i < data.Countries.length; i++)
       {
-        if (query.toLocaleLowerCase() === data.Countries[i].Country.toLowerCase())
+        if (searchQuery.toLocaleLowerCase() === data.Countries[i].Country.toLowerCase())
         {
           setCases(commafy(data.Countries[i].TotalConfirmed));
           setDeaths(commafy(data.Countries[i].TotalDeaths));
@@ -62,16 +57,16 @@ function App() {
 
           foundCountry = true;
 
-          setErrorMessage('');
-
-          return;
+          setErrorMessage("");
         }
       }
 
       if (foundCountry === false)
       {
-        setErrorMessage(`Sorry, didn't find a country with name '${query}'`);
+        setErrorMessage(`Sorry, didn't find a country with name '${searchQuery}'`);
       }
+
+      wasFetchSuccessful(foundCountry == true && response != null);
     }
   }
 
@@ -105,17 +100,23 @@ function App() {
   const submitForm = e => { 
     e.preventDefault();
 
-    setQuery(search);
-
-    fetchData();
+    fetchData(search);
 
     e.target.reset();
+  }
+
+  function wasFetchSuccessful (bool)
+  {
+    if (bool === true)
+    { 
+      setQuery(search);
+    }
   }
 
   return (
     <div className="app">
       <div className="page">
-        <Header text={titleCase(query)}/>
+        <Header query={titleCase(query)}/>
 
         <Searchbar submitForm={submitForm} updateSearch={updateSearch}/>
 
