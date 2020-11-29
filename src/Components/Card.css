@@ -18,7 +18,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 120px;
+  height: 110px;
   margin: auto 0;
 }
 
@@ -26,7 +26,7 @@
 {
   margin: 0;
   padding: 0;
-  font-size: 50px;
+  font-size: 45px;
   font-weight: 700;  
 }
 
@@ -34,7 +34,7 @@
 {
   margin: 0;
   padding: 0;
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 500;  
 }
 
@@ -43,17 +43,27 @@
   .card
   {
     width: 90%;
-    height: 22.5%;
-    min-height: 150px;
+    min-height: 50px;
+    max-height: 150px;
   }
 
   .container
   {
-    height: 85%;
+    height: 55%;
+  }
+
+  .title
+  {
+    font-size: 40px;
+  }
+
+  .amount
+  {
+    font-size: 30px;
   }
 }
 
-@media screen and (max-width: 600px)
+@media screen and (max-width: 500px)
 {
   .title
   {
@@ -61,7 +71,7 @@
   }
 
   .amount
-    {
+  {
     font-size: 7vw;
   }
 }
