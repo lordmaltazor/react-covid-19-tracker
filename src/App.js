@@ -116,16 +116,18 @@ function App() {
 
   return (
     <div className="app">
-      <Header text={titleCase(query)}/>
+      <div className="page">
+        <Header text={titleCase(query)}/>
 
-      <Searchbar submitForm={submitForm} onChange={updateSearch}/>
+        <Searchbar submitForm={submitForm} onChange={updateSearch}/>
 
-      <p className="error-message">{errorMessage}</p> 
+        <p className="error-message">{errorMessage}</p> 
 
-      <div className="cards">
-        <Card title={'Cases: '} amount={cases}/>
-        <Card title={'Deaths: '} amount={deaths}/>
-        <Card title={'Recoveries: '} amount={recovered}/>
+        <div className="cards">
+          <Card title={'Cases: '} amount={cases}/>
+          <Card title={'Deaths: '} amount={deaths}/>
+          <Card title={'Recoveries: '} amount={recovered}/>
+        </div>
       </div>
 
       <Footer />
