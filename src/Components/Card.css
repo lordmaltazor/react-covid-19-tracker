@@ -75,3 +75,11 @@
     font-size: 7vw;
   }
 }
+
+@media screen and (max-width: 375px)
+{
+  .container
+  {
+    height: 45%;
+  }
+}

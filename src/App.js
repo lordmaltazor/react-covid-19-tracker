@@ -110,8 +110,6 @@ function App() {
     fetchData();
 
     e.target.reset();
-
-    e.target.focus(); 
   }
 
   return (
@@ -119,7 +117,7 @@ function App() {
       <div className="page">
         <Header text={titleCase(query)}/>
 
-        <Searchbar submitForm={submitForm} onChange={updateSearch}/>
+        <Searchbar submitForm={submitForm} updateSearch={updateSearch}/>
 
         <p className="error-message">{errorMessage}</p> 
 
